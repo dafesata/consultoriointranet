@@ -1,0 +1,51 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  paciente_id: 1
+  ant_fam: false
+  menarquia: 1
+  hijos: false
+  edadphijo: 1
+  lactancia: false
+  ant_orales: false
+  menopausia: false
+  edad_menopausia: 1
+  trh: false
+  alcohol: false
+  fumador: false
+  consumo_grasa_boolean: MyString
+  peso: 9.99
+  talla: 9.99
+  imc: 9.99
+  equivalente: MyString
+  nro_mamografias: 1
+  autoexamen: false
+  exam_anual: false
+  fecha_mamo: 2016-07-27
+  resul_mamo: 1
+  desc_resul: MyString
+
+two:
+  paciente_id: 1
+  ant_fam: false
+  menarquia: 1
+  hijos: false
+  edadphijo: 1
+  lactancia: false
+  ant_orales: false
+  menopausia: false
+  edad_menopausia: 1
+  trh: false
+  alcohol: false
+  fumador: false
+  consumo_grasa_boolean: MyString
+  peso: 9.99
+  talla: 9.99
+  imc: 9.99
+  equivalente: MyString
+  nro_mamografias: 1
+  autoexamen: false
+  exam_anual: false
+  fecha_mamo: 2016-07-27
+  resul_mamo: 1
+  desc_resul: MyString

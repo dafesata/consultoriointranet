@@ -1,0 +1,48 @@
+<div class="ui one column left aligned grid ">
+
+<%if flash[:notice]%>
+<div class="ui warning message">
+<div class="header">Notificacion</div>
+<p><%= notice %></p>
+</div>
+
+<% end %>
+<div class="one wide column"></div>
+<div class="column">
+
+<h1>Listado de Servicios</h1>
+
+<table class="ui celled table">
+  <thead>
+    <tr>      
+      <th>Nombre</th>
+      <th>Programa o Grupo de Servicios</th>
+      <th>Enable</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @especialidads.each do |especialidad| %>
+      <tr>        
+        <td><%= especialidad.nombre %></td>
+        <td><%=Servicio.where(id: especialidad.servicio_id).select(:nombre).first.nombre %></td>
+        <td><%= especialidad.enable %></td>
+        <td><%= link_to 'Ver', especialidad %></td>
+        <td><%= link_to 'Editar', edit_especialidad_path(especialidad) %></td>  
+        <td><%= link_to 'Eliminar', especialidad, method: :delete, data: { confirm: '¿Seguro/a desea eliminar este servicio?' } %></td>            
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= will_paginate @especialidads, renderer: WillPaginateSemanticUi::ActionView::Renderer, class: "right floated", inner_window: 3 %> 
+<br>
+
+<%= link_to 'Regresar', especialidads_path %>
+</div>
+
+
+
+</div>
+
+

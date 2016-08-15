@@ -1,0 +1,81 @@
+<div class="ui one column center aligned grid">	
+ 		<div class="column">
+			<h1>Municipios y Departamentos </h1>
+		</div>     
+
+<%if can? :create, Divpa %>
+<div class="seven wide computer column">
+	<div class="ui green segment">
+		<%= link_to new_divpa_path do%>
+			<h2 class="ui center aligned icon header">		
+				<%= image_tag("new.jpeg", :class => "ui centered tiny rounded image")%>
+				<div class="content">Crear Municipio</div> 		
+			</h2>		
+		<%end%>
+	</div>
+</div>
+<% end%>
+
+<%if can? :list, Divpa %>
+<div class="seven wide computer column">
+	<div class="ui green segment">
+	<%= link_to list_divpas_path do%>		
+		<h2 class="ui center aligned icon header">
+			<%= (image_tag("list.jpg", :class => "ui centered tiny rounded image")) %>
+			<div class="content">
+				Listar Municipios
+			</div>
+		</h2>
+	<%end%>		
+	</div>
+</div>
+<% end%>
+
+<%if can? :list, Divpa%>
+<div class="seven wide computer column">
+	<div class="ui green segment">			
+		<h2 class="ui center aligned icon header">
+			<%= (image_tag("search.jpg", :class => "ui centered tiny rounded image")) %>
+			<div class="content">
+				Buscar Municipio			
+			</div>
+		</h2>
+		
+		<%= form_tag(list_divpas_path, :method => "get", id: "search-form", class: "ui form search-divpa") do %>
+		<div class="ui one column centered grid">	
+			<div class="row"></div>
+			<div class="five wide field">
+				<%=label_tag :s_municipio,"Nombre Municipio"%>
+			  	<%= text_field_tag :s_municipio, params[:s_municipio]%>
+			</div>
+ 			<div class="five wide field">
+ 				<%=label_tag :s_departamento,"Nombre Departamento"%>
+		  		<%= text_field_tag :s_departamento, params[:s_departamento]%>
+		  	</div>		  
+		</div>
+		<%= submit_tag "Buscar" %>		
+		<% end %>
+		
+		
+	</div>
+</div>
+<% end%>
+
+<%if can? :export, Divpa%>
+<div class="seven wide computer column">
+	<div class="ui green segment">
+		<h2 class="ui center aligned icon header">
+			<%= (image_tag("eps.jpg", :class => "ui centered tiny rounded image")) %>
+			<div class="content">
+				Reportes
+			</div>
+		</h2>
+	</div>
+</div>
+<% end%>
+
+
+
+
+</div>
+	

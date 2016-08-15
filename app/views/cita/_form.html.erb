@@ -1,0 +1,145 @@
+<%= form_for(@citum, html:{class: "ui form cita-form"}) do |f| %>
+
+  <% if @citum.errors.any? %>
+  <div class="ui negative message">
+    <div class="header">
+      Tiene <%= pluralize(@citum.errors.count, "error") %>: 
+      </div>
+      <ul class="list">      
+        <% @citum.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>      
+      </ul>
+      </div>
+   
+    
+  <% end %>
+
+  <div class="five wide required field">    
+    <%= f.label :nro_autorizacion,"Numero de Autorizacion" %>
+    <%= f.text_field :nro_autorizacion %>    
+  </div>
+
+  <div class="five wide required field">
+    <%= label_tag :search_paciente, "Identificacion Paciente" %>
+    <div class="ui search search_paciente">
+    <div class="ui icon input">
+        <%= text_field_tag "search_paciente","", class:"prompt"  %>
+        <i class="search icon"></i>
+      </div>
+    </div>     
+  </div>
+
+  <div class="five wide required field">
+    <%= f.label :paciente_id,"Identificacion Paciente" %>
+    <%= f.number_field :paciente_id, readonly: true %>
+  </div>
+  <div class="six wide field">
+    <%= label_tag :primer_nombre, "Nombres Paciente" %>   
+  <div class="nine wide inline fields">    
+    <%if f.object.persisted? %>
+    <%= text_field_tag :primer_nombre,Persona.where(numero_id: f.object.paciente_id,numero_type: "Paciente" ).first.primer_nombre,:disabled => true%>  
+    <%= text_field_tag :segundo_nombre,Persona.where(numero_id: f.object.paciente_id,numero_type: "Paciente" ).first.segundo_nombre,:disabled => true%>  
+    <%= text_field_tag :primer_apellido,Persona.where(numero_id: f.object.paciente_id,numero_type: "Paciente" ).first.primer_apellido,:disabled => true%> 
+    <%= text_field_tag :segundo_apellido,Persona.where(numero_id: f.object.paciente_id,numero_type: "Paciente" ).first.segundo_apellido,:disabled => true%>  
+    <%else %>
+     <%= text_field_tag :primer_nombre,"",:disabled => true%>  
+    <%= text_field_tag :segundo_nombre,"",:disabled => true%>  
+    <%= text_field_tag :primer_apellido,"",:disabled => true%> 
+    <%= text_field_tag :segundo_apellido,"",:disabled => true%>  
+    <%end %>
+  </div>
+  </div>
+
+  <div class="two fields">
+    <div class="four wide field">
+      <%= f.label :fecha %>    
+      <div class="inline fields">
+      <%=f.date_select :fecha, {:use_short_month=>true,:start_year=> Date.today.year }, {:class => "ui fluid normal dropdown"} %> 
+      </div>    
+    </div>
+
+    <div class="two wide field">
+      <%= f.label :hora %>
+      <div class="inline fields">
+      <%= f.time_select :hora,{minute_step: 15}, {:class => "ui fluid normal dropdown"} %>
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="six wide required field">
+    <%= f.label :consultorio_id %>
+     <%= f.select :consultorio_id, (Consultorio.all.collect{|u| [u.nombre, u.id]}), {selected: f.object.consultorio_id}, class: "ui fluid normal dropdown"%>    
+  </div>
+  <div class="six wide required field">
+    <%= f.label :servicio_id, "Programas y Grupo de servicios" %>
+    <%= f.collection_select :servicio_id, Servicio.where(enable: 1), :id, :nombre, {include_blank: true, selected: f.object.servicio_id}, class: "ui fluid normal dropdown" %>
+  </div>
+  
+
+<div class="six wide required field">
+<%= f.label :especialidad_id, "Servicios" %>
+<%= grouped_collection_select :citum, :especialidad_id, Servicio.where(enable: 1),:especialidads ,:nombre,:especialidad_id, :nombre,{include_blank:true, selected: f.object.especialidad_id} %> 
+
+</div>
+
+  
+  <div class="six wide required field">
+    <%= f.label :profesional_id %>
+    <%= grouped_collection_select :citum, :profesional_id, Especialidad.where(enable:1),:profesionals ,:nombre,:numero_id, :persona,{include_blank: true, selected: f.object.profesional_id} %>     
+  </div>
+  
+
+  <div class="inline field">
+    <div class="ui checkbox">    
+    <%= f.check_box :primera_vez %>
+    <%= f.label :primera_vez %>
+    </div>
+  </div>
+
+  <div class="two fields">
+    <div class="one wide field">
+      <div class="inline field">
+        <div class="ui checkbox">    
+        <%= f.check_box :llegada %>
+        <%= f.label :llegada %>
+        </div>
+      </div>
+    </div>
+    <div class="one wide field">
+      <div class="inline field">
+        <div class="ui checkbox">    
+        <%= f.check_box :atendido %>
+        <%= f.label :atendido %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="two fields">
+    <div class="one wide field">
+      <div class="inline field">
+        <div class="ui checkbox">    
+          <%= f.check_box :riesgo %>
+          <%= f.label :riesgo %>
+        </div>
+      </div>
+    </div>
+    <div class="one wide field">
+      <div class="inline field">
+        <div class="ui checkbox">    
+        <%= f.check_box :psicosocial %>
+        <%= f.label :psicosocial %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <div class="ui buttons">
+      <%= link_to 'Atras', request.referer, :class =>"ui button"%>
+       <div class="or" data-text="O"></div>
+      <%= f.submit "Guardar Cita", :class =>"ui positive button"  %>
+    </div>
+  </div>  
+<% end %>

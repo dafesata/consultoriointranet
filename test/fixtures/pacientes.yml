@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  numero_id: 1
+  eps_id: MyString
+  tipo_usuario: MyString
+
+two:
+  numero_id: 1
+  eps_id: MyString
+  tipo_usuario: MyString

@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Barrio:</strong>
+  <%= @direccion.barrio %>
+</p>
+
+<p>
+  <strong>Direccion:</strong>
+  <%= @direccion.direccion %>
+</p>
+
+<p>
+  <strong>Tel:</strong>
+  <%= @direccion.tel %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_direccion_path(@direccion) %> |
+<%= link_to 'Back', paciente_path(@direccion.numero_id) %>

@@ -1,0 +1,70 @@
+  
+<div class="ui grid">
+
+<div class="computer only row">
+  <div class="ui stackable green fixed inverted secondary pointing medium menu">
+  <div class="ui mini image">
+  <%= (image_tag "Logo.jpg") %>
+  </div>
+  <%= link_to "Inicio", root_path, :class => 'item'  %>
+  <% if current_user.present? %>
+      <%if can? :index, Cita %>
+      <%= link_to "Citas", cita_path, :class => 'item'  %>
+      <% end%>
+      <%if can? :index, Paciente %>
+      <%= link_to "Pacientes", pacientes_path, :class => 'item'  %>
+      <% end%>
+      <%if can? :index, Profesional%>
+      <%= link_to "Profesionales", profesionals_path, :class => 'item'  %>
+      <% end%>
+      <%if can? :index, Ep%>
+      <%= link_to "Eps", eps_path, :class => 'item'  %>
+      <% end%>
+      <%if can? :index, Divpa%>
+      <%= link_to "Municipios", divpas_path, :class => 'item'  %>
+      <% end%>
+      <%if can? :index, Especialidad%>
+      <%= link_to "Servicios", especialidads_path, :class => 'item'  %>
+      <% end%>
+      <%if can? :index, Servicio%>
+      <%= link_to "Programas y Grupos de Servicios", servicios_path, :class => 'item'  %>
+      <% end%>
+      <%if can? :index, Consultorio%>
+      <%= link_to "Consultorios", consultorios_path, :class => 'item'  %>      
+      <% end%>
+      <div class="ui dropdown item programas">
+        <div class="text">Programas</div>
+        <i class="dropdown icon"></i>
+        <div class="menu">
+            <div class="item">              
+              <i class="dropdown icon"></i>Gestion de Riesgo              
+              <div class="menu">                                  
+                    <%= link_to "Cancer de Seno", cancerseno_path, :class =>"item"%> 
+              </div>
+            </div> 
+        
+            <div class="item">              
+              <i class="dropdown icon"></i>Atencion Psicosocial
+              <div class="menu">                                  
+                   <div class="item">
+                      Victimas conflicto armado
+                   </div> 
+              </div>
+            </div> 
+        </div>            
+      </div>    
+     
+  <%end%>
+  <div class="right menu">
+    <% if user_signed_in? %>
+        <% if current_user.admin? %>
+        <%= link_to "Usuarios" , users_admin_index_path, :class => 'ui item' %>  
+        <%end%>
+        <%= link_to current_user.username, edit_user_registration_path, :class => 'ui item' %>
+        
+        <%= link_to "Salir", destroy_user_session_path, method: :delete, :class => 'ui item'  %>
+    <% end %>    
+  </div>
+</div>
+  </div>
+</div>

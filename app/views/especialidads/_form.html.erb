@@ -1,0 +1,57 @@
+<%= form_for(@especialidad, html:{class: "ui form cita-form"}) do |f| %>
+
+  <% if @especialidad.errors.any? %>
+    <div class="ui negative message">
+      <div class="header">
+        Tiene <%= pluralize(@especialidad.errors.count, "error") %>: 
+        </div>
+        <ul class="list">      
+          <% @especialidad.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>      
+        </ul>
+        </div>
+  <% end %>
+
+ <div class="five wide required field">
+    <%= f.label :especialidad_id, "Servicio" %>
+    <%= f.number_field :especialidad_id, :readonly => f.object.persisted? %>
+  </div>
+   <div class="five wide field">
+    <%= f.label :nombre %>
+    <%= f.text_field :nombre, :readonly => f.object.persisted?  %>
+  </div>
+   <div class="five wide field">
+
+   <% if f.object.persisted?%>
+   <div class="field">
+    <%= f.label :servicio_id, "Programa o Grupo Servicios id" %>
+    <%= f.text_field :servicio_id, :readonly => f.object.persisted? %>
+    </div>
+   <div class="field">
+    <%= label_tag :servicio_nombre, "Programa o Grupo Servicios Nombre" %>
+    <%= text_field_tag :servicio_nombre, Servicio.where(id: f.object.servicio_id).select(:nombre).first.nombre,:readonly => f.object.persisted? %>
+    </div>
+    <%else%>
+   <div class="field">
+    <%= f.label :servicio_id, "Programa o Grupo Servicios Nombre"  %>  
+    <%= f.select :servicio_id, (Servicio.all.collect{|u| [u.nombre, u.id]}), {selected: f.object.servicio_id, disabled: f.object.persisted? }%>
+    </div>
+
+    <%end%>
+    
+  </div>
+   <div class="five wide field">
+    
+      <%= f.label :enable %>
+      <%= f.check_box :enable %>
+  
+  </div>
+  <div class="actions">
+   <div class="ui buttons">
+      <%= link_to 'Atras', request.referer, :class =>"ui button"%>
+       <div class="or" data-text="O"></div>
+      <%= f.submit "Guardar Servicio", :class =>"ui positive button"  %>
+    </div>
+  </div>
+<% end %>

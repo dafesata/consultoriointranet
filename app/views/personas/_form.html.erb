@@ -1,0 +1,71 @@
+<%= form_for(@persona) do |f| %>
+  <% if @persona.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@persona.errors.count, "error") %> prohibited this persona from being saved:</h2>
+
+      <ul>
+      <% @persona.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="ui-widget">
+    <%= f.label :tipoid, 'Tipo de Documento' %><br>
+    <%= f.select :tipoid, options_for_select([['CC', 'CEDULA DE CIUDADANIA'], ['TI','TARJETA DE IDENTIDAD'],['RC','REGISTRO CIVIL'],['CE','CEDULA DE EXTRANJERIA'],['PAS','PASAPORTE'] ], selected: f.object.tipoid)%>       
+      <%= if f.object.persisted?
+        text_field_tag "tipo identidad",f.object.tipoid, :disabled => true 
+      else
+        text_field_tag "tipo identidad",'CEDULA DE CIUDADANIA', :disabled => true  
+      end%>            
+  </div>
+     
+  <div class="field">
+    <%= f.label :numero_id %><br>
+    <%= f.number_field :numero_id, value: " " %>
+  </div>
+  <div class="field">
+    <%= f.label :apellidos %><br>
+    <%= f.text_field :apellidos %>
+  </div>
+  <div class="field">
+    <%= f.label :nombres %><br>
+    <%= f.text_field :nombres %>
+  </div>
+  <div class="field">   
+    <%= f.select :estado_civil, options_for_select([['Soltero/a', 'Soltero/a'], ['Casado/a','Casado/a'],['Divorciado/a','Divorciado/a'],['Viudo/a','Viudo/a']],selected: f.object.estado_civil)%> 
+  </div>
+
+  <div class="field">
+    <%= f.label :fecha_nac %><br>
+    <%= f.date_select :fecha_nac, :use_short_month=>true, :start_year => 1920 %>
+  </div>
+  <div class="field">
+    <%= label_tag :años %><br>
+    <%= number_field_tag :años,value=nil, :disabled => true  %>
+  </div>
+  <div class="field">
+    <%= label_tag :meses %><br>
+    <%= number_field_tag :meses,value=nil, :disabled => true  %>
+  </div>
+  <div class="field">
+    <%= f.select :sexo, options_for_select([['M', 'Masculino'], ['F','Femenino']],selected: f.object.sexo)%> 
+   <%= if f.object.persisted?
+      text_field_tag "Sexo",f.object.sexo, :disabled => true 
+   else
+        text_field_tag "Sexo",'Masculino', :disabled => true  
+    end%>
+  </div>
+  <div class="field">
+    <%= f.label :celular %><br>
+    <%= f.number_field :celular %>
+  </div>  
+ 
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>

@@ -1,0 +1,52 @@
+<div class="ui one column center aligned grid">	
+ 		<div class="column">
+			<h1>Programas y Grupos de Servicios </h1>
+		</div>     
+
+<%if can? :create, Servicio %>
+<div class="seven wide computer column">
+	<div class="ui green segment">
+		<%= link_to new_servicio_path do%>
+			<h2 class="ui center aligned icon header">		
+				<%= image_tag("new.jpeg", :class => "ui centered tiny rounded image")%>
+				<div class="content">Crear Programa o Grupo de Servicios </div> 		
+			</h2>		
+		<%end%>
+	</div>
+</div>
+<% end%>
+
+<%if can? :list, Servicio %>
+<div class="seven wide computer column">
+	<div class="ui green segment">
+	<%= link_to list_servicios_path do%>		
+		<h2 class="ui center aligned icon header">
+			<%= (image_tag("list.jpg", :class => "ui centered tiny rounded image")) %>
+			<div class="content">
+				Listar Programa o Grupo de Servicios
+			</div>
+		</h2>
+	<%end%>		
+	</div>
+</div>
+<% end%>
+
+
+<%if can? :export, Servicio%>
+<div class="seven wide computer column">
+	<div class="ui green segment">
+		<h2 class="ui center aligned icon header">
+			<%= (image_tag("eps.jpg", :class => "ui centered tiny rounded image")) %>
+			<div class="content">
+				Reportes
+			</div>
+		</h2>
+	</div>
+</div>
+<% end%>
+
+
+
+
+</div>
+	

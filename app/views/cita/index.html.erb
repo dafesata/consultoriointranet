@@ -1,0 +1,111 @@
+<div class="ui one column center aligned grid">	
+ 		<div class="column">
+			<h1>Citas </h1>
+		</div>     
+
+<%if can? :create, Citum %>
+<div class="seven wide computer column">
+	<div class="ui green segment">
+		<%= link_to new_citum_path do%>
+			<h2 class="ui center aligned icon header">		
+				<%= image_tag("new.jpeg", :class => "ui centered tiny rounded image")%>
+				<div class="content">Crear Citas</div> 		
+			</h2>		
+		<%end%>
+	</div>
+</div>
+<% end%>
+
+<%if can? :list, Citum %>
+<div class="seven wide computer column">
+	<div class="ui green segment">
+	<%= link_to list_cita_path do%>		
+		<h2 class="ui center aligned icon header">
+			<%= (image_tag("list.jpg", :class => "ui centered tiny rounded image")) %>
+			<div class="content">
+				Listar Citas
+			</div>
+		</h2>
+	<%end%>		
+	</div>
+</div>
+<% end%>
+
+<%if can? :list, Citum%>
+<div class="seven wide computer column">
+	<div class="ui green segment">			
+		<h2 class="ui center aligned icon header">
+			<%= (image_tag("search.jpg", :class => "ui centered tiny rounded image")) %>
+			<div class="content">
+				Buscar Cita
+			</div>
+		</h2>	
+		<%= form_tag(list_cita_path, :method => "get", id: "search-form", class:"ui form search-form") do %>
+			
+				
+				
+		  	<% if (current_user.tipo=="PROFESIONAL") %>		  				  		
+		  		<% options=options_for_select([["Paciente",1]]) %>  		  		  		
+		  	<%else%>
+		  		<% options=options_for_select([["Paciente",1],["Profesional",2],["Servicio",3]]) %>  		  		  		
+		  	<%end%>
+			
+			<div class="inline fields">
+				<div class="field">
+					<%=label_tag :s_tipo,"Tipo"%>
+					<%=select_tag :s_tipo, options , :include_blank=>true %>
+				</div>
+				
+				<div id="tipo1">
+					<div class="field">
+						<%=label_tag :s_identificacion,"Identificacion"%>
+						<%=number_field_tag :s_identificacion, params[:s_identificacion] %>
+					</div>
+					<div class="field">
+						<%=label_tag :s_nombre,"Nombres"%>
+						<%=text_field_tag :s_nombre, params[:s_nombre] %>
+					</div>
+					<div class="field">
+						<%=label_tag :s_apellido,"Apellidos"%>
+						<%=text_field_tag :s_apellido, params[:s_apellido] %>
+					</div>				
+				</div>
+				<div id="tipo3">
+					<div class="field">
+						<%=label_tag :s_especialidad,"Nombres"%>
+						<%=text_field_tag :s_especialidad, params[:s_especialidad] %>
+					</div>				
+				</div>
+			</div>
+		  	<div class="eight wide field">
+		  	<%=label_tag :s_fecha,"Fecha"%>
+		  	<div class=" inline fields">
+		  	<%= date_select :s_fecha, params[:s_fecha],  {:use_short_month=>true,:default => @the_date, :include_blank=> @the_date.nil?	}%> 
+		  	</div>
+		  	</div>
+		  	
+		  	<%= submit_tag "Buscar" %>
+		  	<div class="ui error message"></div>
+		<% end %>		
+	</div>
+</div>
+<% end%>
+
+<%if can? :export, Citum%>
+<div class="seven wide computer column">
+	<div class="ui green segment">
+		<h2 class="ui center aligned icon header">
+			<%= (image_tag("eps.jpg", :class => "ui centered tiny rounded image")) %>
+			<div class="content">
+				Reportes
+			</div>
+		</h2>
+	</div>
+</div>
+<% end%>
+
+
+
+
+</div>
+	

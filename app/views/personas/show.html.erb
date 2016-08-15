@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Tipoid:</strong>
+  <%= @persona.tipoid %>
+</p>
+
+<p>
+  <strong>Numero:</strong>
+  <%= @persona.numero_id %>
+</p>
+
+<p>
+  <strong>Apellidos:</strong>
+  <%= @persona.apellidos %>
+</p>
+
+<p>
+  <strong>Nombres:</strong>
+  <%= @persona.nombres %>
+</p>
+
+<p>
+  <strong>Estado civil:</strong>
+  <%= @persona.estado_civil %>
+</p>
+
+<p>
+  <strong>Fecha nac:</strong>
+  <%= @persona.fecha_nac %>
+</p>
+
+<p>
+  <strong>Años:</strong>
+  <script type="text/javascript">
+      
+      document.write(getAge(parseInt(<%= @persona.fecha_nac.day %>),parseInt(<%= @persona.fecha_nac.month %>),parseInt(<%= @persona.fecha_nac.year %>)).years);
+      
+    </script>
+</p>
+
+<p>
+  <strong>Meses:</strong>
+    <script type="text/javascript">
+      document.write(getAge(parseInt(<%= @persona.fecha_nac.day %>),parseInt(<%= @persona.fecha_nac.month %>),parseInt(<%= @persona.fecha_nac.year %>)).months);
+    </script>
+
+</p>
+
+<p>
+  <strong>Sexo:</strong>
+  <%= @persona.sexo %>
+</p>
+
+<p>
+  <strong>Celular:</strong>
+  <%= @persona.celular %>
+</p>
+
+
+
+
+<%= link_to 'Edit', edit_persona_path(@persona) %> |
+<%= link_to 'Back', personas_path %>

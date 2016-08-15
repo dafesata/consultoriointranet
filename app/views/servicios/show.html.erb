@@ -1,0 +1,27 @@
+<div class="ui two column left aligned grid ">
+<div class="one wide column"></div>
+  <div class="column">
+
+<%if flash[:notice]%>
+<div class="ui success message">
+<div class="header">Formulario Completado</div>
+<p><%= notice %></p>
+</div>
+<% end %>
+<p>
+  <strong>Nombre:</strong>
+  <%= @servicio.nombre %>
+</p>
+
+<p>
+  <strong>Enable:</strong>
+  <%= @servicio.enable %>
+</p>
+
+ <%= link_to 'Editar', edit_servicio_path(@servicio), class: "ui button"%>|
+ <%= link_to 'Regresar', servicios_path, class: "ui button"%>
+
+    
+</div>
+</div>
+

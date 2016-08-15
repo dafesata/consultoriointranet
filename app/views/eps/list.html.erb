@@ -1,0 +1,45 @@
+<div class="ui two column left aligned grid ">
+
+<%if flash[:notice]%>
+<div class="ui warning message">
+<div class="header">Notificacion</div>
+<p><%= notice %></p>
+</div>
+
+<% end %>
+<div class="one wide column"></div>
+<div class="column">
+
+<h1>Lista de Eps</h1>
+
+<table class="ui single line celled table">
+  <thead>
+    <tr>
+      <th>Codigo eps</th>
+      <th>Nombre</th>
+      <th>Enable</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @eps.each do |ep| %>
+      <tr>
+        <td><%= ep.codigo_eps %></td>
+        <td><%= ep.nombre %></td>
+        <td><%= ep.enable %></td>
+        <td><%= link_to 'Ver', ep %></td>
+        <td><%= link_to 'Editar', edit_ep_path(ep) %></td>
+        <td><%= link_to 'Eliminar', ep, method: :delete, data: { confirm: '¿Seguro/a desea eliminar esta eps?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<br>
+
+<%= link_to 'Regresar', eps_path %>
+
+</div>
+</div>

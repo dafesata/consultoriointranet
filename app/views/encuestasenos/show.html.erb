@@ -1,0 +1,136 @@
+<div class="ui two column left aligned grid ">
+<div class="one wide column"></div>
+  <div class="column">
+
+<%if flash[:notice]%>
+<div class="ui success message">
+<div class="header">Formulario Completado</div>
+<p><%= notice %></p>
+</div>
+<% end %>
+
+<p>
+  <strong>Paciente:</strong>
+  <%= @encuestaseno.paciente_id %>
+</p>
+
+<p>
+  <strong>Ant fam:</strong>
+  <%= @encuestaseno.ant_fam %>
+</p>
+
+<p>
+  <strong>Menarquia:</strong>
+  <%= @encuestaseno.menarquia %>
+</p>
+
+<p>
+  <strong>Hijos:</strong>
+  <%= @encuestaseno.hijos %>
+</p>
+
+<p>
+  <strong>Edadphijo:</strong>
+  <%= @encuestaseno.edadphijo %>
+</p>
+
+<p>
+  <strong>Lactancia:</strong>
+  <%= @encuestaseno.lactancia %>
+</p>
+
+<p>
+  <strong>Ant orales:</strong>
+  <%= @encuestaseno.ant_orales %>
+</p>
+
+<p>
+  <strong>Menopausia:</strong>
+  <%= @encuestaseno.menopausia %>
+</p>
+
+<p>
+  <strong>Edad menopausia:</strong>
+  <%= @encuestaseno.edad_menopausia %>
+</p>
+
+<p>
+  <strong>Trh:</strong>
+  <%= @encuestaseno.trh %>
+</p>
+
+<p>
+  <strong>Alcohol:</strong>
+  <%= @encuestaseno.alcohol %>
+</p>
+
+<p>
+  <strong>Fumador:</strong>
+  <%= @encuestaseno.fumador %>
+</p>
+
+<p>
+  <strong>Consumo grasa:</strong>
+  <%= @encuestaseno.consumo_grasa %>
+</p>
+
+<p>
+  <strong>Peso:</strong>
+  <%= @encuestaseno.peso %>
+</p>
+
+<p>
+  <strong>Talla:</strong>
+  <%= @encuestaseno.talla %>
+</p>
+
+<p>
+  <strong>Imc:</strong>
+  <%= @encuestaseno.imc %>
+</p>
+
+<p>
+  <strong>Equivalente:</strong>
+  <%= @encuestaseno.equivalente %>
+</p>
+
+<p>
+  <strong>Nro mamografias:</strong>
+  <%= @encuestaseno.nro_mamografias %>
+</p>
+
+<p>
+  <strong>Autoexamen:</strong>
+  <%= @encuestaseno.autoexamen %>
+</p>
+
+<p>
+  <strong>Exam anual:</strong>
+  <%= @encuestaseno.exam_anual %>
+</p>
+
+<p>
+  <strong>Fecha mamo:</strong>
+  <%= @encuestaseno.fecha_mamo %>
+</p>
+
+<p>
+  <strong>Resul mamo:</strong>
+  <%= @encuestaseno.resul_mamo %>
+</p>
+
+<p>
+  <strong>desc resul:</strong>
+  <%= @encuestaseno.desc_resul %>
+</p>
+
+
+ <%= link_to 'Editar', edit_encuestaseno_path(@encuestaseno), class: "ui button"%>|
+ <%= link_to 'Regresar', cancerseno_path, class: "ui button"%>
+
+
+    
+  
+  </div>
+  
+</div>

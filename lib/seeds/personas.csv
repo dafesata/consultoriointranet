@@ -1,0 +1,18 @@
+id,tipoid,numero_type,numero_id,primer_apellido,segundo_apellido,primer_nombre,segundo_nombre,estado_civil,fecha_nac,sexo,celular
+1,CEDULA DE CIUDADANIA,Profesional,34975978,Taborda,Diaz,Ines,,Casado/a,1961-01-21,Femenino,3007362888
+2,CEDULA DE CIUDADANIA,Profesional,1052973555,Aguirre,Sanchez,Maithe,Egali,Soltero/a,1991-07-02,Femenino,3007325224
+3,CEDULA DE CIUDADANIA,Profesional,8729838,Diaz,Villamil,Roberto,,Casado/a,1959-07-26,Masculino,3157030237
+4,CEDULA DE CIUDADANIA,Profesional,9194500,Martinez,Janne,Carlos,Adolfo,Casado/a,1972-08-24,Masculino,3217800575
+5,CEDULA DE CIUDADANIA,Profesional,73243887,Guzman,Rodelo,Hernan,Enrique,Soltero/a,1979-04-27,Masculino,3145414007
+6,CEDULA DE CIUDADANIA,Profesional,9142459,Hernandez,Garcia,Elias,Jose,Union libre,1967-06-27,Masculino,3016381240
+7,CEDULA DE CIUDADANIA,Profesional,19790469,Ojeda,Dancur,Walter,Salvador,Soltero/a,1980-09-24,Masculino,3135734971
+8,CEDULA DE CIUDADANIA,Profesional,33067105,Meza,Rodriguez,Yolima,Del Carmen,Soltero/a,1976-09-08,Femenino,3145365892
+9,CEDULA DE CIUDADANIA,Profesional,33352712,Hurtado,Morales,Joice,Marcella,Casado/a,2016-07-25,Femenino,3132276621
+10,CEDULA DE CIUDADANIA,Profesional,78016498,Torres,Arrazola,Augusto,Enrique,Casado/a,1957-10-20,Masculino,3008623787
+11,CEDULA DE CIUDADANIA,Profesional,92526746,Torres,Tabares,Tonny,Alberto,Casado/a,1975-08-29,Masculino,
+12,CEDULA DE CIUDADANIA,Profesional,9278682,Benitez,Arrieta,Gilber,De Jesus,Union libre,1964-03-18,Masculino,3205745562
+13,CEDULA DE CIUDADANIA,Profesional,9140780,Royet,Trespalacios,Omar,,Casado/a,1965-11-28,Masculino,3012845215
+14,CEDULA DE CIUDADANIA,Profesional,73118683,Hernandez,Hernandez,Hernando,Antonio,Casado/a,1965-08-07,Masculino,3203465344
+15,CEDULA DE CIUDADANIA,Profesional,1052960976,Vargas,Rojas,Cesar,Luis,Soltero/a,1989-02-10,Masculino,3013212737
+16,CEDULA DE CIUDADANIA,Profesional,6866458,Puche,Ruiz,William,Antonio,Casado/a,1957-10-28,Masculino,3106175733
+17,CEDULA DE CIUDADANIA,Profesional,73574914,Mendoza,Luna,Alfredo,,Casado/a,1975-12-14,Masculino,3008141909

@@ -1,0 +1,58 @@
+<div class="ui two column left aligned grid ">
+<div class="one wide column"></div>
+  <div class="column">
+
+<%if flash[:notice]%>
+<div class="ui success message">
+<div class="header">Formulario Completado</div>
+<p><%= notice %></p>
+</div>
+<% end %>
+
+<p>
+  <strong>Codigo Departamento:</strong>
+  <%= @divpa.cod_dpto %>
+</p>
+
+<p>
+  <strong>Codigo Municipio:</strong>
+  <%= @divpa.cod_muni %>
+</p>
+
+<p>
+  <strong>Codigo Centro Poblado:</strong>
+  <%= @divpa.cod_cp %>
+</p>
+
+<p>
+  <strong>Nombre Departamento:</strong>
+  <%= @divpa.nombre_dpto %>
+</p>
+
+<p>
+  <strong>Nombre Municipio:</strong>
+  <%= @divpa.nombre_muni %>
+</p>
+
+<p>
+  <strong>Nombre Centro Poblado:</strong>
+  <%= @divpa.nombre_cp %>
+</p>
+
+<p>
+  <strong>Tipo Centro Poblado:</strong>
+  <%= @divpa.tipo %>
+</p>
+
+<p>
+  <strong>Enable:</strong>
+  <%= @divpa.enable %>
+</p>
+
+ <%= link_to 'Editar', edit_divpa_path(@divpa), class: "ui button"%>|
+ <%= link_to 'Regresar', divpas_path, class: "ui button"%>
+
+    
+</div>
+</div>
+

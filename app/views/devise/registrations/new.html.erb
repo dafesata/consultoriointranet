@@ -1,0 +1,64 @@
+
+<div class="ui two column left aligned grid ">
+<div class="one wide column"></div>
+  <div class="fourteen wide column">
+ <h2>Registro</h2>
+  
+  <div class="sixteen wide computer column">
+
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="field">
+    <%= f.label :numero_id, "Numero Identificacion" %><br />
+    <%= f.number_field :numero_id, autofocus: true  %>
+  </div>
+
+  <div class="field">
+    <%= f.label :nombres %><br />
+    <%= f.text_field :nombres %>
+  </div>
+  <div class="field">
+    <%= f.label :apellidos %><br />
+    <%= f.text_field :apellidos %>
+  </div>
+  <div class="field">
+    <%= f.label :username %><br />
+    <%= f.text_field :username %>
+  </div>
+
+  <div class="field">
+    <%= f.label :tipo %><br />
+    <%= f.select :tipo, options_for_select([['BASICO', 'BASICO'], ['PROFESIONAL','PROFESIONAL'], ['ADMINISTRADOR','ADMINISTRADOR']],selected: f.object.tipo)%> 
+  </div>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password, "Contraseña" %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> caracteres minimos)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation, "Confirmacion contraseña" %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Registrarse" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>
+  </div>
+  </div>
+  
+  
+</div>

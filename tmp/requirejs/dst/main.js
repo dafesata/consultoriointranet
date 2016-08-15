@@ -1,0 +1,1 @@
+menu={},menu.ready=function(){var e=$(".menu a.item, .menu .link.item"),t={activate:function(){$(this).addClass("active").closest(".ui.menu").find(".item").not($(this)).removeClass("active")}};e.on("click",t.activate)},$(document).ready(menu.ready);

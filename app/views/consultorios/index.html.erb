@@ -1,0 +1,52 @@
+<div class="ui one column center aligned grid">	
+ 		<div class="column">
+			<h1>Consultorios </h1>
+		</div>     
+
+<%if can? :create, Consultorio %>
+<div class="seven wide computer column">
+	<div class="ui green segment">
+		<%= link_to new_consultorio_path do%>
+			<h2 class="ui center aligned icon header">		
+				<%= image_tag("new.jpeg", :class => "ui centered tiny rounded image")%>
+				<div class="content">Crear Consultorio </div> 		
+			</h2>		
+		<%end%>
+	</div>
+</div>
+<% end%>
+
+<%if can? :list, Consultorio %>
+<div class="seven wide computer column">
+	<div class="ui green segment">
+	<%= link_to list_consultorios_path do%>		
+		<h2 class="ui center aligned icon header">
+			<%= (image_tag("list.jpg", :class => "ui centered tiny rounded image")) %>
+			<div class="content">
+				Listar Consultorios
+			</div>
+		</h2>
+	<%end%>		
+	</div>
+</div>
+<% end%>
+
+
+<%if can? :export, Consultorio%>
+<div class="seven wide computer column">
+	<div class="ui green segment">
+		<h2 class="ui center aligned icon header">
+			<%= (image_tag("eps.jpg", :class => "ui centered tiny rounded image")) %>
+			<div class="content">
+				Reportes
+			</div>
+		</h2>
+	</div>
+</div>
+<% end%>
+
+
+
+
+</div>
+	

@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tipoid: MyString
+  numero: one
+  numero_type: Numero
+  primer_apellido: MyString
+  segundo_apellido: MyString
+  primer_nombre: MyString
+  segundo_nombre: MyString
+  estado_civil: MyString
+  fecha_nac: 2016-07-23
+  sexo: MyString
+  celular: 1
+
+two:
+  tipoid: MyString
+  numero: two
+  numero_type: Numero
+  primer_apellido: MyString
+  segundo_apellido: MyString
+  primer_nombre: MyString
+  segundo_nombre: MyString
+  estado_civil: MyString
+  fecha_nac: 2016-07-23
+  sexo: MyString
+  celular: 1

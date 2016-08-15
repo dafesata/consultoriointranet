@@ -1,0 +1,1 @@
+json.extract! @citum, :id, :paciente_id, :fecha, :hora, :consultorio_id, :servicio_id, :especialidad_id, :profesional_id, :integer, :llegada, :atendido,:riesgo,:psicosocial, :nro_autorizacion, :primera_vez,:created_at, :updated_at

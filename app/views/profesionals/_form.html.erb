@@ -1,0 +1,167 @@
+<%= form_for(@profesional, html:{class: "ui form profesional-form"}) do |f| %>
+ 
+
+ <% if @profesional.errors.any? %>
+  <div class="ui negative message">
+    <div class="header">
+      Tiene <%= pluralize(@profesional.errors.count, "error") %>: 
+      </div>
+      <ul class="list">      
+        <% @profesional.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>      
+      </ul>
+      </div>
+<% end %>
+ <div class="ui error message"></div>
+
+<%= f.fields_for :persona do |persona| %>
+
+    <div class="two fields">
+      <div class="five wide field">
+        <%= persona.label :tipoid, 'Tipo de Documento' %>
+        <div class="two fields">
+          <div class="four wide field">
+            <%= persona.select :tipoid, options_for_select([['CC', 'CEDULA DE CIUDADANIA'], ['TI','TARJETA DE IDENTIDAD'],['RC','REGISTRO CIVIL'],['CE','CEDULA DE EXTRANJERIA'],['PAS','PASAPORTE'],['MS','MENOR SIN IDENTIFICACION'],['AS','ADULTO SIN IDENTIFICACION'],['NV','CERTIFICADO NACIDO VIVO'] ], selected: persona.object.tipoid, class: "ui fluid normal dropdown")%> 
+          </div>
+          <div class="eleven wide field">
+            <%= if persona.object.persisted?
+              text_field_tag "tipo identidad",persona.object.tipoid, :disabled => true 
+            else
+              text_field_tag "tipo identidad",'CEDULA DE CIUDADANIA', :disabled => true  
+            end%> 
+          </div>
+        </div>
+      </div>
+      <%end%>
+      
+      <div class="three wide required field">
+        <%= f.label :numero_id %>
+        <%= f.number_field :numero_id %>
+      </div>
+  </div>
+     
+
+    <%= f.fields_for :persona do |persona| %>
+    <div class="two fields">
+      <div class="four wide field">
+        <%= persona.label :primer_apellido %>
+        <%= persona.text_field :primer_apellido %>
+      </div>
+
+      <div class="four wide field">
+        <%= persona.label :segundo_apellido %>
+        <%= persona.text_field :segundo_apellido %>
+      </div>
+    </div>
+    <div class="two fields">
+      <div class="four wide field">
+        <%= persona.label :primer_nombre %>
+        <%= persona.text_field :primer_nombre %>
+      </div>
+    
+      <div class="four wide field">
+        <%= persona.label :segundo_nombre %>
+        <%= persona.text_field :segundo_nombre %>
+      </div>
+    </div>
+    <div class="two fields">
+      <div class="four wide field">
+        <%= label_tag :sexo, "Genero" %>
+        <div class="four fields">
+          <div class="five wide field">
+        <%= persona.select :sexo, options_for_select([['M', 'Masculino'], ['F','Femenino']],selected: persona.object.sexo)%> 
+          </div>
+          <div class="eleven wide field">
+            <%= if persona.object.persisted?
+          text_field_tag "Sexo",persona.object.sexo, :disabled => true 
+        else
+          text_field_tag "Sexo",'Masculino', :disabled => true  
+        end%>
+        </div>
+      </div>
+      </div>
+
+      <div class="four wide field">
+        <%= persona.label :estado_civil %>
+        <%= persona.select :estado_civil, options_for_select([['Soltero/a', 'Soltero/a'], ['Casado/a','Casado/a'],['Divorciado/a','Divorciado/a'],['Viudo/a','Viudo/a'],['Union libre','Union libre']],selected: persona.object.estado_civil)%> 
+      </div>
+    
+    </div>
+
+    <div class="three fields">
+      <div class="four wide field">
+        <%= persona.label :fecha_nac, "Fecha de Nacimiento" %>
+        <div class="inline fields">
+        <%= persona.date_select :fecha_nac, :use_short_month=>true, :start_year => 1920 %>
+        </div>
+      </div>
+      <div class="two wide field">
+          <%= label_tag :años %>
+          <%= number_field_tag :años,value=nil, :disabled => true  %>
+        </div>           
+        <div class="two wide field">
+            <%= label_tag :meses %>
+            <%= number_field_tag :meses,value=nil, :disabled => true  %>
+        </div>
+    
+    </div>    
+  
+    <div class="five wide field">
+      <%= persona.label :celular %>
+      <%= persona.number_field :celular %>
+    </div>   
+
+  <% end%>
+  <div class="two fields">
+       <div class="four wide field">
+      <%= f.label :reg_med, "Tarjeta Profesional o Registro medico" %>
+      <%= f.number_field :reg_med %>
+    </div>
+      <div class="four wide field">
+      <%= f.label :especialidad_id, "Servicio" %>
+      <%= f.select :especialidad_id, (Especialidad.where(enable: 1).collect{|u| [u.nombre, u.especialidad_id]}), selected: f.object.especialidad_id%>    
+    </div>
+  </div>
+  <!-- Formulario Direccion -->
+
+<h2>Direccion</h2>
+  <%= f.fields_for :direccions do |direccion| %>
+    <div class="two fields">
+      <div class="four wide field">
+       <%= direccion.label :municipio_id, "Lugar de Residencia" %>
+       <%= direccion.select :municipio_id, (Divpa.where(enable: 1).collect{|u| [u.nombre_cp, u.cod_cp]}), selected: direccion.object.municipio_id%>
+      
+      </div>
+      <div class="four wide field">
+        <%= direccion.label :barrio, "Barrio" %>
+        <%= direccion.text_field :barrio %>
+      </div>
+    </div>
+    <div class="two fields">
+    <div class="five wide required field">
+        <%= direccion.label :direccion, "Direccion" %>
+        <%= direccion.text_field :direccion %>
+      </div>
+    <div class="three wide field">
+        <%= direccion.label :tel, "Telefono o Celular" %>
+        <%= direccion.number_field :tel %>
+      </div>
+    </div>   
+    <div class="five wide field">
+        <%= if direccion.object.persisted?
+          direccion.label :_destroy, "Borrar" 
+          direccion.check_box :_destroy      
+        end %>
+      </div>       
+    
+  <% end %>
+ 
+ <div class="actions">
+   <div class="ui buttons">
+      <%= link_to 'Atras', request.referer, :class =>"ui button"%>
+       <div class="or" data-text="O"></div>
+      <%= f.submit "Guardar Profesional", :class =>"ui positive button"  %>
+    </div>
+  </div>
+<% end %>

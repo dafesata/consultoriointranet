@@ -1,0 +1,126 @@
+<div class="ui two column left aligned grid ">
+<div class="one wide column"></div>
+  <div class="column">
+
+<%if flash[:notice]%>
+<div class="ui success message">
+<div class="header">Formulario Completado</div>
+<p><%= notice %></p>
+</div>
+<% end %>
+
+<p>
+  <strong>Tipo de Documento:</strong>
+  <%= @profesional.persona.tipoid %>
+</p>
+
+<p>
+  <strong>Numero:</strong>
+  <%= @profesional.persona.numero_id%>
+</p>
+
+<p>
+  <strong>Nombres:</strong>
+  <%= @profesional.persona.nombres %>
+</p>
+
+<p>
+  <strong>Apellidos:</strong>
+  <%= @profesional.persona.apellidos %>
+</p>
+
+<p>
+  <strong>Estado civil:</strong>
+  <%= @profesional.persona.estado_civil %>
+</p>
+
+<p>
+  <strong>Fecha nac:</strong>
+  <%= @profesional.persona.fecha_nac %>
+</p>
+
+<p>
+  <strong>Años:</strong>
+  <script type="text/javascript">
+      
+      document.write(getAge(parseInt(<%= @profesional.persona.fecha_nac.day %>),parseInt(<%= @profesional.persona.fecha_nac.month %>),parseInt(<%= @profesional.persona.fecha_nac.year %>)).years);
+      
+    </script>
+</p>
+
+<p>
+  <strong>Meses:</strong>
+    <script type="text/javascript">
+      document.write(getAge(parseInt(<%= @profesional.persona.fecha_nac.day %>),parseInt(<%= @profesional.persona.fecha_nac.month %>),parseInt(<%= @profesional.persona.fecha_nac.year %>)).months);
+    </script>
+
+</p>
+
+<p>
+  <strong>Sexo:</strong>
+  <%= @profesional.persona.sexo %>
+</p>
+
+<p>
+  <strong>Celular:</strong>
+  <%= @profesional.persona.celular %>
+</p>
+
+
+<p>
+  <strong>Reg med:</strong>
+  <%= @profesional.reg_med %>
+</p>
+
+<p>
+  <strong>Servicio:</strong>
+  <%= Especialidad.where(especialidad_id: @profesional.especialidad_id).select(:nombre).first.nombre %>
+</p>
+
+<% if @profesional.direccions.any? %>
+   <ul>
+    <% @profesional.direccions.each do |direccion| %>
+   
+      <p>
+        <strong>Barrio:</strong>
+        <%= direccion.barrio %>
+      </p>
+
+      <p>
+        <strong>Direccion:</strong>
+        <%= direccion.direccion %>
+      </p>
+
+      <p>
+        <strong>Tel:</strong>
+        <%= direccion.tel %>
+      </p>
+
+      <p>
+        <strong>Departamento:</strong>
+        <%= Divpa.where(cod_cp: direccion.municipio_id).select(:nombre_dpto).first.nombre_dpto %>
+      </p>
+
+      <p>
+        <strong>Municipio:</strong>
+        <%= Divpa.where(cod_cp: direccion.municipio_id).select(:nombre_cp).first.nombre_cp %>
+      </p>
+          
+    <% end %>
+        </ul>  
+<% else %>
+ <div class="ui info message">    
+    <div class="header">
+      Informacion Adicional
+    </div>
+    <p>no hay direcciones</p>  
+  </div>  
+<% end %>
+
+ <%= link_to 'Editar', edit_profesional_path(@profesional), class: "ui button"%>|
+ <%= link_to 'Regresar', profesionals_path, class: "ui button"%>
+
+    
+</div>
+</div>
+

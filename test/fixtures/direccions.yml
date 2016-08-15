@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  barrio: MyString
+  direccion: MyString
+  tel: 1
+  numero: one
+  numero_type: Numero
+  municipio_id: 1
+
+two:
+  barrio: MyString
+  direccion: MyString
+  tel: 1
+  numero: two
+  numero_type: Numero
+  municipio_id: 1

@@ -1,0 +1,183 @@
+<%= form_for(@encuestaseno, html:{class: "ui form encuestaseno-form"}) do |f| %>
+
+ <% if @encuestaseno.errors.any? %>
+  <div class="ui negative message">
+
+    <div class="header">
+      Tiene <%= pluralize(@encuestaseno.errors.count, "error") %>: 
+      </div>
+      <ul class="list">      
+        <% @encuestaseno.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>      
+      </ul>
+      </div>
+  <% end %>
+
+ 
+<div class="ui error message"></div>
+
+  <div class="five wide field">
+    <%= label_tag :search_paciente, "Identificacion Paciente" %>
+    <div class="ui search search_paciente">
+    <div class="ui icon input">
+        <%= text_field_tag "search_paciente","", class:"prompt"  %>
+        <i class="search icon"></i>
+      </div>
+    </div>     
+  </div>
+
+  <div class="five wide required field">
+    <%= f.label :paciente_id,"Identificacion Paciente" %>
+    <%= f.number_field :paciente_id, readonly: true %>
+  </div>
+  <div class="six wide field">
+    <%= label_tag :primer_nombre, "Nombres Paciente" %>   
+  <div class="nine wide inline fields">    
+    <%if f.object.persisted? %>
+    <%= text_field_tag :primer_nombre,Persona.where(numero_id: f.object.paciente_id,numero_type: "Paciente" ).first.primer_nombre,:disabled => true%>  
+    <%= text_field_tag :segundo_nombre,Persona.where(numero_id: f.object.paciente_id,numero_type: "Paciente" ).first.segundo_nombre,:disabled => true%>  
+    <%= text_field_tag :primer_apellido,Persona.where(numero_id: f.object.paciente_id,numero_type: "Paciente" ).first.primer_apellido,:disabled => true%> 
+    <%= text_field_tag :segundo_apellido,Persona.where(numero_id: f.object.paciente_id,numero_type: "Paciente" ).first.segundo_apellido,:disabled => true%>  
+    <%else %>
+     <%= text_field_tag :primer_nombre,"",:disabled => true%>  
+    <%= text_field_tag :segundo_nombre,"",:disabled => true%>  
+    <%= text_field_tag :primer_apellido,"",:disabled => true%> 
+    <%= text_field_tag :segundo_apellido,"",:disabled => true%>  
+    <%end %>
+  </div>
+  </div>
+<div class="two fields">
+  <div class="two wide field">
+    <%= f.label :menarquia, "Edad Menarquia" %>
+    <%= f.number_field :menarquia %>
+  </div>
+
+  <div class="three wide field">
+    <%= f.label :ant_fam, "Antecedentes Familiares" %>
+    <%= f.check_box :ant_fam %>
+  </div>
+</div>
+<div class="three fields">
+
+  <div class="one wide field">    
+      <%= f.label :hijos %>    
+      <%= f.check_box :hijos %>    
+  </div>
+
+  <div class="two wide field">
+    <%= f.label :edadphijo, "Edad Primer Hijo" %>
+    <%= f.number_field :edadphijo %>
+  </div>
+
+
+  <div class="one wide field">
+    <%= f.label :lactancia %>
+    <%= f.check_box :lactancia %>
+  </div>
+</div>
+
+  <div class="field">
+    <%= f.label :ant_orales, "Anticonceptivos Orales" %>
+    <%= f.check_box :ant_orales %>
+  </div>
+<div class="two fields">
+  <div class="two wide field">
+    <%= f.label :menopausia %>
+    <%= f.check_box :menopausia %>
+  </div>
+  <div class="two wide field">
+    <%= f.label :edad_menopausia %>
+    <%= f.number_field :edad_menopausia %>
+  </div>
+</div>
+  <div class="three wide field">
+    <%= f.label :trh, "Terapia Restitucion Hormonal" %>
+    <%= f.check_box :trh %>
+  </div>
+
+<div class="three fields">
+  <div class=" one wide field">
+    <%= f.label :alcohol %>
+    <%= f.check_box :alcohol %>
+  </div>
+
+  <div class="one wide field">
+    <%= f.label :fumador %>
+    <%= f.check_box :fumador %>
+  </div>
+
+  <div class="two wide field">
+    <%= f.label :consumo_grasa %>
+    <%= f.check_box :consumo_grasa %>
+  </div>
+</div>
+
+<div class="four fields">
+  <div class="one wide field">
+    <%= f.label :peso, "Peso (Kg)" %>
+    <%=f.text_field :peso%>
+  </div>
+
+  <div class="one wide field">
+    <%= f.label :talla, "Talla(mts)" %>
+    <%=f.text_field :talla%>
+  </div>
+
+  <div class="two wide field">
+    <%= f.label :imc %>
+    <%=f.text_field :imc, readonly: true%>
+  </div>
+
+  <div class="four wide field">
+    <%= f.label :equivalente %>
+    <%= f.text_field :equivalente, readonly: true %>
+  </div>
+</div>
+  
+<div class="two fields">
+  <div class="two wide field">
+    <%= f.label :autoexamen %>
+    <%= f.check_box :autoexamen %>
+  </div>
+
+  <div class="two wide field">
+    <%= f.label :exam_anual, "Examen Anual" %>
+    <%= f.check_box :exam_anual %>
+  </div>
+</div>
+
+<div class="two relaxed fields">
+  <div class="two wide field">
+    <%= f.label :nro_mamografias, "# Mamografias" %>
+    <%= f.number_field :nro_mamografias %>
+  </div>
+
+  <div class="four wide field">
+    <%= f.label :fecha_mamo,"Fecha Mamografia" %>
+    <div class="inline fields">
+      <%= f.date_select :fecha_mamo, :use_short_month=>true %>
+    </div>
+  </div>
+</div>
+<div class="two fields">
+  <div class="five wide field">
+    <%= f.label :resul_mamo, "Resultado Mamografia" %>
+    <%= f.select :resul_mamo, options_for_select([['Necesidad nuevo estudio o previa mamogragia', '1'], ['Negativo','2'],['Hallazgos benignos','3'],['Probablemente benigno','4'],['Anormalidad sospechosa','5'],['Altamente sopechoso de malignidad','6'],['Malignidad por biopsia conocida','7'],['Sin dato','999'],['No Aplica','0'] ], selected: f.object.resul_mamo, class: "ui fluid normal dropdown")%> 
+  </div>
+
+  <div class="five wide field desc_resul">
+    <%= f.label :desc_resul, "Descripcion Resultado Mamografia" %>
+    <%= f.text_field :desc_resul, readonly: true %>
+  </div>
+</div>
+
+
+<div class="actions">
+   <div class="ui buttons">
+      <%= link_to 'Atras', cancerseno_path, :class =>"ui button"%>
+       <div class="or" data-text="O"></div>
+      <%= f.submit "Guardar Encuesta", :class =>"ui positive button"  %>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,142 @@
+<div class="ui two column left aligned grid ">
+<div class="one wide column"></div>
+  <div class="column">
+
+<%if flash[:notice]%>
+<div class="ui success message">
+<div class="header">Formulario Completado</div>
+<p><%= notice %></p>
+</div>
+<% end %>
+
+<p>
+  <strong>Tipo de Documento:</strong>
+  <%= @paciente.persona.tipoid %>
+</p>
+
+<p>
+  <strong>Numero:</strong>
+  <%= @paciente.persona.numero_id%>
+</p>
+
+<p>
+  <strong>Nombres:</strong>
+  <%= @paciente.persona.nombres %>
+</p>
+
+<p>
+  <strong>Apellidos:</strong>
+  <%= @paciente.persona.apellidos %>
+</p>
+
+<p>
+  <strong>Genero:</strong>
+  <%= @paciente.persona.sexo %>
+</p>
+
+<p>
+  <strong>Estado civil:</strong>
+  <%= @paciente.persona.estado_civil %>
+</p>
+
+<p>
+  <strong>Fecha nac:</strong>
+  <%= @paciente.persona.fecha_nac %>
+</p>
+
+<p>
+  <strong>Años:</strong>
+  <script type="text/javascript">
+      
+      document.write(getAge(parseInt(<%= @paciente.persona.fecha_nac.day %>),parseInt(<%= @paciente.persona.fecha_nac.month %>),parseInt(<%= @paciente.persona.fecha_nac.year %>)).years);
+      
+    </script>
+</p>
+
+<p>
+  <strong>Meses:</strong>
+    <script type="text/javascript">
+      document.write(getAge(parseInt(<%= @paciente.persona.fecha_nac.day %>),parseInt(<%= @paciente.persona.fecha_nac.month %>),parseInt(<%= @paciente.persona.fecha_nac.year %>)).months);
+    </script>
+
+</p>
+
+<p>
+  <strong>Lugar de Nacimiento:</strong>
+  <%= @paciente.lugar_nac%>
+</p>
+
+<p>
+  <strong>Nacionalidad:</strong>
+  <%= @paciente.nacionalidad%>
+</p>
+
+<p>
+  <strong>Numero de hijps:</strong>
+  <%= @paciente.nro_hijos %>
+</p>
+
+<p>
+  <strong>Celular:</strong>
+  <%= @paciente.persona.celular %>
+</p>
+
+
+
+<p>
+  <strong>Tipo de Usuario:</strong>
+  <%= @paciente.tipo_usuario %>
+</p>
+
+<p>
+  <strong>EPS:</strong>
+  <%= Ep.where(codigo_eps: @paciente.eps_id).select(:nombre).first.nombre %>
+</p>
+
+<% if @paciente.direccions.any? %>
+   <ul>
+    <% @paciente.direccions.each do |direccion| %>
+   
+      <p>
+        <strong>Barrio:</strong>
+        <%= direccion.barrio %>
+      </p>
+
+      <p>
+        <strong>Direccion:</strong>
+        <%= direccion.direccion %>
+      </p>
+
+      <p>
+        <strong>Tel:</strong>
+        <%= direccion.tel %>
+      </p>
+
+      <p>
+        <strong>Departamento:</strong>
+        <%= Divpa.where(cod_cp: direccion.municipio_id).select(:nombre_dpto).first.nombre_dpto %>
+      </p>
+
+      <p>
+        <strong>Municipio:</strong>
+        <%= Divpa.where(cod_cp: direccion.municipio_id).select(:nombre_cp).first.nombre_cp %>
+      </p>
+          
+    <% end %>
+        </ul>  
+<% else %>
+ <div class="ui info message">    
+    <div class="header">
+      Informacion Adicional
+    </div>
+    <p>no hay direcciones</p>  
+  </div>  
+<% end %>
+
+ <%= link_to 'Editar', edit_paciente_path(@paciente), class: "ui button"%>|
+ <%= link_to 'Regresar', pacientes_path, class: "ui button"%>
+
+    
+</div>
+</div>
+

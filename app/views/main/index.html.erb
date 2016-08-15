@@ -1,0 +1,135 @@
+<div class="ui one column center aligned grid">	
+ 		<div class="column">
+			<h1>Bienvenido </h1>
+		</div>     
+
+<%if can? :index, Cita %>
+<div class="seven wide computer column">
+	<div class="ui green segment">
+	<%= link_to cita_path do%>
+		<h2 class="ui center aligned icon header">
+			<%= (image_tag("cita.jpeg", :class => "ui centered tiny rounded image")) %>
+			<div class="content">
+				Citas				
+			</div>			
+		</h2>
+		<p>Informacion acerca de citas programadas.</p>
+		<%end%>
+	</div>
+</div>
+<% end%>
+
+<%if can? :index, Paciente %>
+<div class="seven wide computer column">
+	<div class="ui green segment">	
+	<%= link_to pacientes_path do%>	
+		<h2 class="ui center aligned icon header">
+			<%= (image_tag("paciente.jpg", :class => "ui centered tiny rounded image")) %>
+			<div class="content">
+				Pacientes
+			</div>
+		</h2>
+		<p>Informacion acerca de pacientes</p>
+		<%end%>
+	</div>
+</div>
+<% end%>
+
+<%if can? :index, Profesional%>
+<div class="seven wide computer column">
+	<div class="ui green segment">
+	<%= link_to profesionals_path do%>
+		<h2 class="ui center aligned icon header">
+			<%= (image_tag("doctor.jpg", :class => "ui centered tiny rounded image")) %>
+			<div class="content">
+				Profesionales
+			</div>
+		</h2>
+		<p>Informacion acerca de profesionales</p>
+		<%end%>
+	</div>
+</div>
+<% end%>
+
+<%if can? :index, Ep%>
+<div class="seven wide computer column">
+	<div class="ui green segment">
+	<%= link_to eps_path do%>
+		<h2 class="ui center aligned icon header">
+			<%= (image_tag("eps.jpg", :class => "ui centered tiny rounded image")) %>
+			<div class="content">
+				Eps
+			</div>
+		</h2>
+		<p>Informacion acerca de EPS</p>
+		<%end%>
+	</div>
+</div>
+<% end%>
+
+<%if can? :index, Divpa%>
+<div class="seven wide computer column">
+	<div class="ui green segment">
+	<%= link_to divpas_path do%>
+		<h2 class="ui center aligned icon header">
+			<%= (image_tag("mapa.jpg", :class => "ui centered tiny rounded image")) %>
+			<div class="content">
+				Municipios
+			</div>
+		</h2>
+		<p>Informacion acerca de Muncipios</p>
+		<%end%>
+	</div>
+</div>
+<% end%>
+
+<%if can? :index, Especialidad%>
+<div class="seven wide computer column">
+	<div class="ui green segment">
+	<%= link_to especialidads_path do%>
+		<h2 class="ui center aligned icon header">			
+			<%= (image_tag("especialidades.jpg", :class => "ui centered tiny rounded image")) %>
+			<div class="content">
+				Servicios
+			</div>
+		</h2>
+		<p>Informacion acerca de Servicios</p>
+		<%end%>
+	</div>
+</div>
+<% end%>
+
+<%if can? :index, Servicio%>
+<div class="seven wide computer column">
+	<div class="ui green segment">
+	<%= link_to servicios_path do%>
+		<h2 class="ui center aligned icon header">
+			<%= (image_tag("servicios.png", :class => "ui centered tiny rounded image")) %>
+			<div class="content">
+				Programas y Grupos de Servicios
+			</div>
+		</h2>
+		<p>Informacion acerca de Programas y Grupos de Servicios</p>
+		<%end%>
+	</div>
+</div>
+<% end%>
+
+<%if can? :index, Consultorio%>
+<div class="seven wide computer column">
+	<div class="ui green segment">
+	<%= link_to consultorios_path do%>
+		<h2 class="ui center aligned icon header">
+			<%= (image_tag("consultorio.jpg", :class => "ui centered tiny rounded image")) %>
+			<div class="content">
+				Consultorios
+			</div>
+		</h2>
+		<p>Informacion acerca de Consultorios</p>
+		<%end%>
+	</div>
+</div>
+<% end%>
+
+</div>
+	

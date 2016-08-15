@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  numero_id: 1
+  reg_med: 1
+  especialidad_id: 1
+
+two:
+  numero_id: 1
+  reg_med: 1
+  especialidad_id: 1

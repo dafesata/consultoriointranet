@@ -1,0 +1,47 @@
+<div class="ui two column left aligned grid ">
+
+<%if flash[:notice]%>
+<div class="ui warning message">
+<div class="header">Notificacion</div>
+<p><%= notice %></p>
+</div>
+
+<% end %>
+<div class="one wide column"></div>
+<div class="column">
+<h1>Listado de Profesionales</h1>
+
+<table class="ui single line celled table">
+  <thead>
+    <tr>
+      <th>Numero</th>
+      <th>Nombres</th>
+      <th>Apelllidos</th>
+      <th>Registro Medico</th>
+      <th>Servicio</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @profesionals.each do |profesional| %>
+      <tr>
+        <td><%= profesional.numero_id %></td>
+        <td><%= profesional.persona.nombres %></td>
+        <td><%= profesional.persona.apellidos %></td>
+        <td><%= profesional.reg_med %></td>
+        <td><%= Especialidad.where(especialidad_id: profesional.especialidad_id).select(:nombre).first.nombre %></td>
+        <td><%= link_to 'Ver', profesional %></td>
+        <td><%= link_to 'Editar', edit_profesional_path(profesional) %></td>
+        <td><%= link_to 'Borrar', profesional, method: :delete, data: { confirm: '¿Seguro/a desea eliminar este profesional?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Regresar', profesionals_path %>
+
+</div>
+</div>

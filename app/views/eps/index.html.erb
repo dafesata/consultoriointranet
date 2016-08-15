@@ -1,0 +1,78 @@
+<div class="ui one column center aligned grid">	
+ 		<div class="column">
+			<h1>EPS </h1>
+		</div>     
+
+<%if can? :create, Ep %>
+<div class="seven wide computer column">
+	<div class="ui green segment">
+		<%= link_to new_ep_path do%>
+			<h2 class="ui center aligned icon header">		
+				<%= image_tag("new.jpeg", :class => "ui centered tiny rounded image")%>
+				<div class="content">Crear EPS</div> 		
+			</h2>		
+		<%end%>
+	</div>
+</div>
+<% end%>
+
+<%if can? :list, Ep %>
+<div class="seven wide computer column">
+	<div class="ui green segment">
+	<%= link_to list_eps_path do%>		
+		<h2 class="ui center aligned icon header">
+			<%= (image_tag("list.jpg", :class => "ui centered tiny rounded image")) %>
+			<div class="content">
+				Listar EPS
+			</div>
+		</h2>
+	<%end%>		
+	</div>
+</div>
+<% end%>
+
+<%if can? :list, Ep%>
+<div class="seven wide computer column">
+	<div class="ui green segment">			
+		<h2 class="ui center aligned icon header">
+			<%= (image_tag("search.jpg", :class => "ui centered tiny rounded image")) %>
+			<div class="content">
+				Buscar EPS			
+			</div>
+		</h2>	
+
+		<%= form_tag(list_eps_path, :method => "get", id: "search-form", class: "ui form search-eps") do %>
+
+		<div class="ui one column centered grid">
+			<div class="row"></div>
+			<div class="eigth wide field">
+			<%=label_tag :s_eps,"Nombre EPS"%>
+  			<%= text_field_tag :s_eps, params[:s_eps] %> 
+  			<%= submit_tag "Buscar" %> 
+  			</div>
+  		</div>
+  		<div class="ui error message"></div>
+  			
+		<% end %>		
+	</div>
+</div>
+<% end%>
+
+<%if can? :export, Ep%>
+<div class="seven wide computer column">
+	<div class="ui green segment">
+		<h2 class="ui center aligned icon header">
+			<%= (image_tag("eps.jpg", :class => "ui centered tiny rounded image")) %>
+			<div class="content">
+				Reportes
+			</div>
+		</h2>
+	</div>
+</div>
+<% end%>
+
+
+
+
+</div>
+	

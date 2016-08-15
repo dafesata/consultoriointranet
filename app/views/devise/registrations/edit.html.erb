@@ -1,0 +1,82 @@
+
+<div class="ui two column left aligned grid ">
+<div class="one wide column"></div>
+  <div class="fourteen wide column">
+ <h2>Editando Usuario</h2>
+  
+  <div class="sixteen wide computer column">
+
+
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= devise_error_messages! %>
+
+
+
+ <div class="field">
+    <%= f.label :numero_id, "Numero Identificacion" %><br />
+    <%= f.number_field :numero_id, autofocus: true  %>
+  </div>
+
+  <div class="field">
+    <%= f.label :nombres %><br />
+    <%= f.text_field :nombres %>
+  </div>
+  <div class="field">
+    <%= f.label :apellidos %><br />
+    <%= f.text_field :apellidos %>
+  </div>
+  <div class="field">
+    <%= f.label :username %><br />
+    <%= f.text_field :username %>
+  </div>
+
+  <div class="field">
+    <%= f.label :tipo %><br />
+    <%= f.select :tipo, options_for_select([['BASICO', 'BASICO'], ['PROFESIONAL','PROFESIONAL'], ['ADMINISTRADOR','ADMINISTRADOR']],selected: f.object.tipo)%> 
+  </div>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email%>
+  </div>
+
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Esperando confirmacion para: <%= resource.unconfirmed_email %></div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :password, "Contraseña" %> <i>(Deje en blanco sino desea cambiarla)</i><br />
+    <%= f.password_field :password, autocomplete: "off" %>
+    <% if @minimum_password_length %>
+      <br />
+      <em><%= @minimum_password_length %> caracteres minimos</em>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation, "Confirmacion contraseña" %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :current_password, "Contraseña Actual" %> <i>(Introduzca su contraseña actual para confirmar los cambios)</i><br />
+    <%= f.password_field :current_password, autocomplete: "off" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Actualizar" %>
+  </div>
+<% end %>
+
+<h3>Cancelar mi cuenta</h3>
+
+<%= button_to "Cancelar mi cuenta", registration_path(resource_name), data: { confirm: "¿Esta seguro/a?" }, method: :delete %>
+
+<%= link_to "Regresar", :back %>
+
+</div>
+  </div>
+  
+  
+</div>

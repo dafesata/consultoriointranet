@@ -1,0 +1,82 @@
+<div class="ui two column left aligned grid ">
+
+<%if flash[:notice]%>
+<div class="ui warning message">
+<div class="header">Notificacion</div>
+<p><%= notice %></p>
+</div>
+<% end %>
+
+<div class="one wide column"></div>
+<div class="column">
+<h1>Listado de Encuestas</h1>
+
+<table class="ui celled table">
+  <thead>
+    <tr>
+      <th>Paciente</th>
+      <th>Ant fam</th>
+      <th>Menarquia</th>
+      <th>Hijos</th>
+      <th>Edadphijo</th>
+      <th>Lactancia</th>
+      <th>Ant orales</th>
+      <th>Menopausia</th>
+      <th>Edad menopausia</th>
+      <th>Trh</th>
+      <th>Alcohol</th>
+      <th>Fumador</th>
+      <th>Consumo grasa</th>
+      <th>Peso</th>
+      <th>Talla</th>
+      <th>Imc</th>
+      <th>Equivalente</th>
+      <th>Nro mamografias</th>
+      <th>Autoexamen</th>
+      <th>Exam anual</th>
+      <th>Fecha mamo</th>
+      <th>Resul mamo</th>
+      <th>Desc Resul</th>     
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @encuestasenos.each do |encuestaseno| %>
+      <tr>
+        <td><%= encuestaseno.paciente_id %></td>
+        <td><%= encuestaseno.ant_fam %></td>
+        <td><%= encuestaseno.menarquia %></td>
+        <td><%= encuestaseno.hijos %></td>
+        <td><%= encuestaseno.edadphijo %></td>
+        <td><%= encuestaseno.lactancia %></td>
+        <td><%= encuestaseno.ant_orales %></td>
+        <td><%= encuestaseno.menopausia %></td>
+        <td><%= encuestaseno.edad_menopausia %></td>
+        <td><%= encuestaseno.trh %></td>
+        <td><%= encuestaseno.alcohol %></td>
+        <td><%= encuestaseno.fumador %></td>
+        <td><%= encuestaseno.consumo_grasa %></td>
+        <td><%= encuestaseno.peso %></td>
+        <td><%= encuestaseno.talla %></td>
+        <td><%= encuestaseno.imc %></td>
+        <td><%= encuestaseno.equivalente %></td>
+        <td><%= encuestaseno.nro_mamografias %></td>
+        <td><%= encuestaseno.autoexamen %></td>
+        <td><%= encuestaseno.exam_anual %></td>
+        <td><%= encuestaseno.fecha_mamo %></td>
+        <td><%= encuestaseno.resul_mamo %></td>  
+        <td><%= encuestaseno.desc_resul %></td>      
+        <td><%= link_to 'Ver', encuestaseno %></td>
+        <td><%= link_to 'Editar', edit_encuestaseno_path(encuestaseno) %></td>
+        <td><%= link_to 'Eliminar', encuestaseno, method: :delete, data: { confirm: '¿Seguro/a desea eliminar esta encuesta?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Atras', cancerseno_path %>
+</div>
+</div>

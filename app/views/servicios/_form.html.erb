@@ -1,0 +1,31 @@
+<%= form_for(@servicio, html:{class: "ui form cita-form"}) do |f| %>
+
+  <% if @servicio.errors.any? %>
+    <div class="ui negative message">
+      <div class="header">
+        Tiene <%= pluralize(@servicio.errors.count, "error") %>: 
+        </div>
+        <ul class="list">      
+          <% @servicio.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>      
+        </ul>
+        </div>
+  <% end %>
+
+ <div class="five wide required field">
+    <%= f.label :nombre %>
+    <%= f.text_field :nombre, :readonly => f.object.persisted? %>
+  </div>
+   <div class="five wide field">
+    <%= f.label :enable %>
+    <%= f.check_box :enable %>
+  </div>
+  <div class="actions">
+   <div class="ui buttons">
+      <%= link_to 'Atras', request.referer, :class =>"ui button"%>
+       <div class="or" data-text="O"></div>
+      <%= f.submit "Guardar Programa o Grupo Servicios", :class =>"ui positive button"  %>
+    </div>
+  </div>
+<% end %>

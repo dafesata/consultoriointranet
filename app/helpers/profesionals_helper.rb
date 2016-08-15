@@ -1,0 +1,2 @@
+module ProfesionalsHelper
+end

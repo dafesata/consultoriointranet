@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cod_dpto: 1
+  cod_muni: 1
+  cod_cp: 1
+  nombre_dpto: MyString
+  nombre_muni: MyString
+  nombre_cp: MyString
+  tipo: MyString
+  enable: false
+
+two:
+  cod_dpto: 1
+  cod_muni: 1
+  cod_cp: 1
+  nombre_dpto: MyString
+  nombre_muni: MyString
+  nombre_cp: MyString
+  tipo: MyString
+  enable: false

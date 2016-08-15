@@ -1,0 +1,29 @@
+
+<div class="ui two column left aligned grid ">
+<div class="one wide column"></div>
+	<div class="fourteen wide column">
+<h2>Reenviando instrucciones de confirmacion</h2>
+	
+	<div class="sixteen wide computer column">
+	
+
+
+<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Reenviar instrucciones de confirmacion" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>
+	</div>
+	</div>
+	
+	
+</div>

@@ -1,0 +1,34 @@
+<%= form_for(@ep, html:{class: "ui form cita-form"}) do |f| %>
+<% if @ep.errors.any? %>
+  <div class="ui negative message">
+    <div class="header">
+      Tiene <%= pluralize(@ep.errors.count, "error") %>: 
+      </div>
+      <ul class="list">      
+        <% @ep.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>      
+      </ul>
+      </div>
+<% end %>
+
+ <div class="five wide required field">
+    <%= f.label :codigo_eps %>
+    <%= f.text_field :codigo_eps, :readonly => f.object.persisted? %>
+  </div>
+    <div class="five wide field">
+    <%= f.label :nombre %>
+    <%= f.text_field :nombre, :readonly => f.object.persisted? %>
+  </div>
+    <div class="five wide field">
+    <%= f.label :enable %>
+    <%= f.check_box :enable %>
+  </div>
+  <div class="actions">
+   <div class="ui buttons">
+      <%= link_to 'Atras', request.referer, :class =>"ui button"%>
+       <div class="or" data-text="O"></div>
+      <%= f.submit "Guardar EPS", :class =>"ui positive button"  %>
+    </div>
+  </div>
+<% end %>

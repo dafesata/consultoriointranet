@@ -1,0 +1,58 @@
+<%= form_for(@divpa, html:{class: "ui form cita-form"}) do |f| %>
+
+<% if @divpa.errors.any? %>
+  <div class="ui negative message">
+    <div class="header">
+      Tiene <%= pluralize(@divpa.errors.count, "error") %>: 
+      </div>
+      <ul class="list">      
+        <% @divpa.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>      
+      </ul>
+      </div>
+<% end %>
+
+ <div class="five wide required field">
+    <%= f.label :cod_dpto, "Codigo Departamento" %>
+    <%= f.number_field :cod_dpto, :readonly => f.object.persisted? %>
+  </div>
+   <div class="five wide field">
+    <%= f.label :nombre_dpto, "Nombre Departamento" %>
+    <%= f.text_field :nombre_dpto, :readonly => f.object.persisted? %>
+  </div>
+
+ <div class="five wide required field">
+    <%= f.label :cod_muni, "Codigo Municipio" %>
+    <%= f.number_field :cod_muni, :readonly => f.object.persisted? %>
+  </div>
+   <div class="five wide field">
+    <%= f.label :nombre_muni, "Nombre Municipio" %>
+    <%= f.text_field :nombre_muni, :readonly => f.object.persisted? %>
+  </div>
+
+ <div class="five wide required field">
+    <%= f.label :cod_cp, "Codigo Centro Poblado" %>
+    <%= f.number_field :cod_cp, :readonly => f.object.persisted? %>
+  </div>   
+   
+    <div class="five wide field">
+    <%= f.label :nombre_cp, "Nombre Centro Poblado" %>
+    <%= f.text_field :nombre_cp, :readonly => f.object.persisted? %>
+  </div>
+    <div class="five wide field">
+    <%= f.label :tipo, "Tipo Centro Poblado"%>
+    <%= f.text_field :tipo, :readonly => f.object.persisted? %>
+  </div>
+    <div class="five wide field">
+    <%= f.label :enable %>
+    <%= f.check_box :enable %>
+  </div>
+ <div class="actions">
+   <div class="ui buttons">
+      <%= link_to 'Atras', request.referer, :class =>"ui button"%>
+       <div class="or" data-text="O"></div>
+      <%= f.submit "Guardar Municipio", :class =>"ui positive button"  %>
+    </div>
+  </div>
+<% end %>

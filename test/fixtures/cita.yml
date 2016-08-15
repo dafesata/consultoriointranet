@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  paciente_id: 1
+  fecha: 2016-07-23
+  hora: 2016-07-23 23:33:04
+  consultorio_id: 1
+  servicio_id: 1
+  especialidad_id: 1
+  profesional_id: 1
+  llegada: false
+  atendido: false
+  riesgo: false
+  psicosocial: false
+
+two:
+  paciente_id: 1
+  fecha: 2016-07-23
+  hora: 2016-07-23 23:33:04
+  consultorio_id: 1
+  servicio_id: 1
+  especialidad_id: 1
+  profesional_id: 1
+  llegada: false
+  atendido: false
+  riesgo: false
+  psicosocial: false
